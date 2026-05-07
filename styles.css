@@ -257,6 +257,7 @@ h1 {
 }
 
 .trust-row span {
+  max-width: 100%;
   padding: 9px 13px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -265,6 +266,7 @@ h1 {
   font-size: 13px;
   font-weight: 600;
   white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .hero-showcase {
@@ -467,6 +469,7 @@ h1 {
 }
 
 .principles,
+.about-panels,
 .service-grid,
 .team-grid,
 .feedback-grid {
@@ -477,9 +480,11 @@ h1 {
 }
 
 .principles article,
+.about-panels article,
 .service-grid article,
 .team-grid article,
-.feedback blockquote {
+.feedback blockquote,
+.principle-grid article {
   min-height: 210px;
   padding: 28px;
   border: 1px solid var(--line);
@@ -489,11 +494,15 @@ h1 {
 
 .service-grid article p,
 .principles article p,
+.about-panels article p,
 .team-grid article p {
   font-size: 16px;
 }
 
-.principles span {
+.principles span,
+.about-panels span,
+.dimension-list article span,
+.principle-grid article span {
   color: var(--gold);
   font-weight: 800;
 }
@@ -532,7 +541,7 @@ article p,
   gap: 12px;
 }
 
-.radar-list span {
+.radar-list > span {
   min-height: 72px;
   padding: 20px;
   border: 1px solid rgba(230, 232, 237, 0.8);
@@ -541,8 +550,61 @@ article p,
   font-weight: 700;
 }
 
+.dimension-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dimension-list article {
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid rgba(230, 232, 237, 0.9);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.dimension-list article:last-child {
+  grid-column: 1 / -1;
+}
+
+.dimension-list h3 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.dimension-list p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
 .service-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.detailed-services {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detailed-services article {
+  min-height: 360px;
+}
+
+.detailed-services dl {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.detailed-services dt {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.detailed-services dd {
+  margin: -6px 0 8px;
+  color: var(--muted);
+  line-height: 1.72;
 }
 
 .process {
@@ -580,11 +642,11 @@ article p,
 }
 
 .team-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .team-grid article {
-  min-height: 156px;
+  min-height: 230px;
   background: rgba(255, 255, 255, 0.72);
 }
 
@@ -606,6 +668,24 @@ article p,
   color: #2c3037;
   font-size: 18px;
   line-height: 1.8;
+}
+
+.principle-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.principle-grid article {
+  min-height: 240px;
+}
+
+.principle-grid h3 {
+  margin-top: 18px;
+}
+
+.principle-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.72;
 }
 
 .partners {
@@ -704,10 +784,10 @@ article p,
 }
 
 .site-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(320px, 1.2fr) auto;
+  align-items: start;
+  gap: 28px;
   padding: 34px clamp(22px, 5vw, 72px);
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -723,8 +803,21 @@ article p,
 }
 
 .site-footer p {
+  grid-column: 1 / -1;
   margin: 0;
-  text-align: right;
+  text-align: left;
+  font-size: 13px;
+}
+
+.footer-details,
+.footer-links {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-details a,
+.footer-links a {
+  color: var(--ink);
 }
 
 @media (max-width: 1100px) {
@@ -799,6 +892,7 @@ article p,
 
   .intro-grid,
   .principles,
+  .about-panels,
   .service-grid,
   .feedback-grid {
     grid-template-columns: 1fr;
@@ -817,7 +911,7 @@ article p,
   }
 
   .site-footer {
-    display: block;
+    grid-template-columns: 1fr;
   }
 
   .site-footer p {
@@ -860,6 +954,11 @@ article p,
     max-width: calc(100vw - 36px);
   }
 
+  .hero-copy,
+  .hero-lede {
+    max-width: 340px;
+  }
+
   h1 {
     font-size: 44px;
     line-height: 1.05;
@@ -871,6 +970,20 @@ article p,
   .contact-copy p,
   .intro-grid p {
     font-size: 16px;
+  }
+
+  .trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: min(100%, 340px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .trust-row span {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
   }
 
   .hero-actions,
@@ -899,6 +1012,16 @@ article p,
     overflow: hidden;
   }
 
+  .insight-board h2 {
+    font-size: 36px;
+    line-height: 1.12;
+  }
+
+  .insight-board p:not(.eyebrow) {
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
   .mini-radar {
     width: min(100%, 260px);
   }
@@ -918,13 +1041,22 @@ article p,
   .radar-list,
   .insight-cards,
   .process,
-  .team-grid {
+  .team-grid,
+  .dimension-list,
+  .detailed-services,
+  .principle-grid {
     grid-template-columns: 1fr;
   }
 
+  .dimension-list article:last-child {
+    grid-column: auto;
+  }
+
   .principles article,
+  .about-panels article,
   .service-grid article,
   .team-grid article,
+  .principle-grid article,
   .feedback blockquote,
   .process div {
     min-height: auto;
