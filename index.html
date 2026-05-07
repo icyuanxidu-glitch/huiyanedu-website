@@ -7,7 +7,15 @@
       name="description"
       content="慧研国际教育专注英联邦大学专业认知、升学路径规划与全周期申请陪伴。先看懂专业，再决定学校。"
     />
+    <meta name="theme-color" content="#082744" />
+    <meta property="og:title" content="慧研国际教育 | 先看懂专业，再决定学校" />
+    <meta
+      property="og:description"
+      content="专注英联邦大学专业认知、升学路径规划与全周期申请陪伴。"
+    />
+    <meta property="og:image" content="images/huiyan-logo.png" />
     <title>慧研国际教育 | 先看懂专业，再决定学校</title>
+    <link rel="icon" href="images/huiyan-logo.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -53,21 +61,75 @@
             <span>全周期陪伴</span>
           </div>
         </div>
-        <div class="hero-panel" aria-label="慧研专业判断模型">
-          <div class="panel-top">
-            <span>Huiyan Programme Radar</span>
-            <span>01</span>
+
+        <div class="hero-showcase" aria-label="慧研核心信息互动区">
+          <div class="insight-board" aria-live="polite">
+            <div class="insight-board-copy">
+              <p class="eyebrow">Featured Insight</p>
+              <h2 data-insight-title>专业雷达</h2>
+              <p data-insight-copy>
+                从课程结构、考核方式、学习难度与职业出口出发，把留学选择从“看排名”推进到“能判断”。
+              </p>
+            </div>
+            <div class="mini-radar" aria-hidden="true">
+              <span>课程</span>
+              <span>考核</span>
+              <strong>适配</strong>
+              <span>难度</span>
+              <span>出口</span>
+            </div>
           </div>
-          <div class="radar-orbit">
-            <div class="radar-core">专业适配</div>
-            <span>课程</span>
-            <span>考核</span>
-            <span>难度</span>
-            <span>出口</span>
+
+          <div class="insight-cards" role="list" aria-label="点击切换核心信息">
+            <button
+              class="insight-card active tone-blue"
+              type="button"
+              data-insight-card
+              data-title="专业雷达"
+              data-copy="从课程结构、考核方式、学习难度与职业出口出发，把留学选择从“看排名”推进到“能判断”。"
+              aria-pressed="true"
+            >
+              <span>01</span>
+              <strong>看懂专业</strong>
+              <small>课程、考核、难度、出口</small>
+            </button>
+            <button
+              class="insight-card tone-gold"
+              type="button"
+              data-insight-card
+              data-title="路径规划"
+              data-copy="结合成绩、预算、目标国家与职业方向，设计预科、本科、硕士、博士等更稳健的申请路径。"
+              aria-pressed="false"
+            >
+              <span>02</span>
+              <strong>设计路径</strong>
+              <small>国家、阶段、预算、时间线</small>
+            </button>
+            <button
+              class="insight-card tone-green"
+              type="button"
+              data-insight-card
+              data-title="全周期陪伴"
+              data-copy="服务不止到 offer。我们延伸到入学准备、学术适应、论文支持、职业规划和英国本地事务。"
+              aria-pressed="false"
+            >
+              <span>03</span>
+              <strong>长期陪伴</strong>
+              <small>申请、入学、学术、职业</small>
+            </button>
+            <button
+              class="insight-card tone-coral"
+              type="button"
+              data-insight-card
+              data-title="专业准确"
+              data-copy="所有关键判断以官方课程页、招生要求、政府签证信息和可追溯资料为准，不做夸大承诺。"
+              aria-pressed="false"
+            >
+              <span>04</span>
+              <strong>准确合规</strong>
+              <small>官方来源、风险提示、隐私保护</small>
+            </button>
           </div>
-          <p>
-            从课程结构、考核方式、学习难度与职业出口出发，把留学选择从“看排名”推进到“能判断”。
-          </p>
         </div>
       </section>
 
