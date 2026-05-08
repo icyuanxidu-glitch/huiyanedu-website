@@ -50,9 +50,9 @@ img {
   position: sticky;
   top: 0;
   z-index: 20;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   min-height: 76px;
   padding: 14px var(--page-x);
@@ -66,6 +66,7 @@ img {
   align-items: center;
   gap: 12px;
   min-width: 0;
+  justify-self: start;
 }
 
 .brand img {
@@ -97,6 +98,7 @@ img {
   display: flex;
   align-items: center;
   gap: 4px;
+  justify-self: center;
   color: #30343b;
   font-size: 14px;
   font-weight: 600;
@@ -117,7 +119,22 @@ img {
   background: var(--ink);
 }
 
-.site-nav .nav-cta:hover {
+.site-nav .mobile-cta {
+  display: none;
+}
+
+.header-cta {
+  justify-self: end;
+  padding: 12px 18px;
+  border-radius: 999px;
+  color: var(--white);
+  background: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.site-nav .nav-cta:hover,
+.header-cta:hover {
   background: var(--navy);
 }
 
@@ -538,6 +555,10 @@ h1 {
   text-align: center;
 }
 
+.about-heading {
+  max-width: 940px;
+}
+
 .section-heading h2,
 .partner-panel h2,
 .contact h2 {
@@ -568,6 +589,19 @@ h1 {
   color: #30343b;
   font-size: clamp(19px, 2vw, 25px);
   line-height: 1.72;
+}
+
+.about-heading p:not(.eyebrow) {
+  max-width: 850px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #343841;
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.82;
+}
+
+.intro .about-panels {
+  margin-top: 48px;
 }
 
 .principles,
@@ -852,12 +886,14 @@ article p,
 
 .service-feature-card {
   grid-column: span 2;
-  color: var(--white);
-  background: linear-gradient(135deg, #082744, #123b5d 60%, #0b353d);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 92% 18%, rgba(184, 148, 72, 0.18), transparent 30%),
+    linear-gradient(135deg, #eef6ff, #ffffff 56%, #f8f1df);
 }
 
 .service-feature-card span {
-  color: #f0cf7d;
+  color: var(--gold);
   font-weight: 800;
 }
 
@@ -869,7 +905,7 @@ article p,
 
 .service-feature-card p {
   max-width: 680px;
-  color: rgba(255, 255, 255, 0.82);
+  color: #343841;
   font-size: 18px;
 }
 
@@ -884,9 +920,11 @@ article p,
 
 .service-feature-card li {
   padding: 10px 13px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(8, 39, 68, 0.16);
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.58);
+  font-weight: 700;
 }
 
 .detailed-services dl {
@@ -946,21 +984,58 @@ article p,
 }
 
 .team-grid article {
-  min-height: 230px;
+  min-height: 260px;
   background: rgba(255, 255, 255, 0.72);
 }
 
 .team-grid h3 {
+  margin-bottom: 16px;
   font-size: 21px;
 }
 
+.team-grid strong,
+.team-grid span {
+  display: block;
+}
+
+.team-grid strong {
+  min-height: 26px;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.team-grid article > span {
+  min-height: 46px;
+  margin-bottom: 14px;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.team-grid article p {
+  margin-bottom: 0;
+}
+
 .credential-note {
+  display: grid;
+  gap: 8px;
   margin-top: 20px;
   padding: 22px 26px;
   border-left: 3px solid var(--gold);
   color: #30343b;
   background: #fffaf0;
   line-height: 1.75;
+}
+
+.credential-note strong {
+  color: var(--ink);
+}
+
+.credential-note span {
+  color: var(--muted);
 }
 
 .feedback blockquote {
@@ -1159,6 +1234,15 @@ article p,
 }
 
 @media (max-width: 860px) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-cta {
+    display: none;
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -1187,6 +1271,10 @@ article p,
   .site-nav .nav-cta {
     margin-left: 0;
     text-align: center;
+  }
+
+  .site-nav .mobile-cta {
+    display: block;
   }
 
   .brand small {
